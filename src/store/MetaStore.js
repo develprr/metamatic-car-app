@@ -3,8 +3,7 @@ import axios from 'axios';
 import {CAR_DATA_URL} from '../constants';
 
 const metaStore = {
-  carData: null,
-  ownerData: null
+  carDetails: null
 };
 
 export const initMetaStore = () => {
@@ -24,8 +23,7 @@ export const initMetaStore = () => {
   });
 
   handle('LOAD-CAR-DATA-SUCCESS', (data) => {
-    metaStore.carData = data;
-    dispatch('CAR-DATA-CHANGE', {...data});
+    metaStore.carDetails = data;
+    dispatch('CAR-DATA-CHANGE', {...metaStore.carDetails});
   });
-
-}
+};
