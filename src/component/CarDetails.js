@@ -1,5 +1,5 @@
 import React from 'react';
-import {dispatch, handleAll} from 'synchronous-dispatcher';
+import {dispatch, handle} from 'synchronous-dispatcher';
 
 export class CarDetails extends React.Component {
 
