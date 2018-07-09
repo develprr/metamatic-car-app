@@ -10,9 +10,7 @@ export class CarDetails extends React.Component {
   }
 
   componentDidMount() {
-    handleAll(['CAR-DATA-CHANGE'], (carDetails) => this.setState({
-      carDetails
-    }));
+    handle('CAR-DATA-CHANGE', (carDetails) => this.setState({carDetails}));
   }
 
   render() {
