@@ -1,6 +1,7 @@
 import React from 'react';
 import {dispatch, handle} from 'synchronous-dispatcher';
-import {REQUEST_CAR_DATA} from '../store/MetaStore';
+import {REQUEST_CAR_DATA,CAR_DATA_CHANGE} from '../store/MetaStore';
+import {} from '../constants';
 
 export class CarDetails extends React.Component {
 
