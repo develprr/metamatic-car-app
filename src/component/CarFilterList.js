@@ -1,7 +1,7 @@
 import React from 'react';
 import {CarModelList} from './CarModelList.js';
-import {dispatch, handle, unhandle} from 'synchronous-dispatcher';
-import {CAR_LIST_CHANGE, FILTER_CAR_MODELS, REQUEST_CAR_LIST} from '../store/MetaStore';
+import {dispatch} from 'synchronous-dispatcher';
+import {CAR_LIST_CHANGE, FILTER_CAR_MODELS, REQUEST_CAR_LIST, attach, detach} from '../store/MetaStore';
 
 export class CarFilterList extends React.Component {
 
@@ -11,7 +11,7 @@ export class CarFilterList extends React.Component {
       carModels: [],
       initialCarModels: []
     };
-    handle(CAR_LIST_CHANGE, this.constructor.name, (carModels) => {
+    attach(this, CAR_LIST_CHANGE, (carModels) => {
       carModels = Object.values(carModels);
       this.setState({carModels: carModels, initialCarModels: carModels});
     });
@@ -22,7 +22,7 @@ export class CarFilterList extends React.Component {
   }
 
   componentWillUnmount() {
-		unhandle(CAR_LIST_CHANGE, this.constructor.name);
+		detach(this, CAR_LIST_CHANGE);
 	}
 
 	handleSearchPhraseChange =(event) => {

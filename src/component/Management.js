@@ -1,21 +1,22 @@
 import React from 'react';
 import {CarFilterList} from './CarFilterList.js';
 import {Navigation} from './Navigation.js';
-import {handle, unhandle} from 'synchronous-dispatcher';
+import {hand} from 'synchronous-dispatcher';
 import {CarDetails} from './CarDetails';
-import {CAR_MODEL_SELECTION_CHANGE, LOGIN_STATE_CHANGE} from '../store/MetaStore';
+import {CAR_MODEL_SELECTION_CHANGE, LOGIN_STATE_CHANGE, attach, detach} from '../store/MetaStore';
 
 export class Management extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {loggedIn: true};
-    handle(LOGIN_STATE_CHANGE, this.constructor.name, (loggedIn) => this.setState({loggedIn}));
-    handle(CAR_MODEL_SELECTION_CHANGE, this.constructor.name, (selectedCarModel) => this.setState({selectedCarModel}));
+    attach(this, LOGIN_STATE_CHANGE, (loggedIn) => this.setState({loggedIn}));
+    attach(this, CAR_MODEL_SELECTION_CHANGE, (selectedCarModel) => this.setState({selectedCarModel}));
   }
 
   componentWillUnmount() {
-    unhandle(this.constructor.name);
+    detach(this, LOGIN_STATE_CHANGE);
+    detach(this, CAR_MODEL_SELECTION_CHANGE);
   }
 
   createViewComponent() {

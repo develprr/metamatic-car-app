@@ -1,6 +1,6 @@
 import React from 'react';
 import {dispatch, handle, unhandle} from 'synchronous-dispatcher';
-import {REQUEST_CAR_ENTRY,CAR_ENTRY_CHANGE} from '../store/MetaStore';
+import {REQUEST_CAR_ENTRY, CAR_ENTRY_CHANGE, attach, detach} from '../store/MetaStore';
 import {} from '../constants';
 
 export class CarDetails extends React.Component {
@@ -12,11 +12,11 @@ export class CarDetails extends React.Component {
   }
 
   componentDidMount() {
-    handle(CAR_ENTRY_CHANGE, this.constructor.name, (carDetails) => this.setState({carDetails}));
+    attach(this, CAR_ENTRY_CHANGE, (carDetails) => this.setState({carDetails}));
   }
 
   componentWillUnmount() {
-    unhandle(CAR_ENTRY_CHANGE, this.constructor.name);
+    detach(this, CAR_ENTRY_CHANGE);
   }
 
   render() {

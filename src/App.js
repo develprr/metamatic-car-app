@@ -6,8 +6,7 @@ import {AppTitle} from './component/AppTitle.js';
 import {Management} from './component/Management.js';
 import {Login} from './component/Login.js';
 
-import {handle, unhandle} from 'synchronous-dispatcher';
-import {initMetaStore, LOGIN_STATE_CHANGE} from './store/MetaStore';
+import {attach, detach, initMetaStore, LOGIN_STATE_CHANGE} from './store/MetaStore';
 
 export class App extends React.Component {
 
@@ -17,13 +16,13 @@ export class App extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    handle(LOGIN_STATE_CHANGE, this.constructor.name, (loggedIn) => {
+    attach(this, LOGIN_STATE_CHANGE, (loggedIn) => {
       this.setState({loggedIn});
     })
   }
 
   componentWillUnmount() {
-    unhandle(this.constructor.name);
+    detach(this, LOGIN_STATE_CHANGE);
   }
 
   createViewComponent() {
