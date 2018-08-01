@@ -14,14 +14,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     initMetaStore();
-    this.state = {loggedIn: true};
+    this.state = {};
     handle(LOGIN_STATE_CHANGE, (loggedIn) => {
         this.setState({loggedIn});
     })
-  }
-
-  handleLoginSuccess(event) {
-    this.setState({loggedIn: true});
   }
 
   createViewComponent() {
