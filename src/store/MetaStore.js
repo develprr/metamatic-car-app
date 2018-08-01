@@ -1,10 +1,10 @@
 import {dispatch, handle} from 'synchronous-dispatcher'
 import axios from 'axios';
-import {CAR_DATA_URL, LOGIN_URL} from '../constants';
+import {CAR_DATA_URL} from '../constants';
+import {CarModelService} from '../service/CarModelService';
 
 export const REQUEST_CAR_LIST = 'REQUEST_CAR_LIST';
 export const REQUEST_CAR_ENTRY = 'REQUEST_CAR_ENTRY';
-
 export const CAR_LIST_CHANGE = 'CAR_LIST_CHANGE';
 export const CAR_ENTRY_CHANGE = 'CAR_ENTRY_CHANGE';
 export const LOAD_CAR_DATA_SUCCESS = 'LOAD_CAR_DATA_SUCCESS';
@@ -17,14 +17,15 @@ export const NAVIGATE_BACK = 'NAVIGATE_BACK'
 export const LOGIN_STATE_CHANGE = 'LOGIN_STATE_CHANGE';
 export const CAR_MODEL_SELECTED = 'CAR_MODEL_SELECTED';
 export const CAR_MODEL_SELECTION_CHANGE = 'CAR_MODEL_SELECTION_CHANGE';
-
+export const FILTER_CAR_MODELS = 'FILTER_CAR_MODELS';
 
 const metaStore = {
   carData: null,
   cars: null,
   loggedIn: false,
   lastCarModel: null,
-  activeCarModel: null
+  activeCarModel: null,
+  carModelFilter: ''
 };
 
 export const initMetaStore = () => {
@@ -57,7 +58,7 @@ export const initMetaStore = () => {
   handle(NAVIGATE_BACK, () => {
     metaStore.lastCarModel = metaStore.activeCarModel;
     metaStore.activeCarModel = null;
-    dispatch(CAR_MODEL_SELECTION_CHANGE)
+    dispatch(CAR_MODEL_SELECTION_CHANGE, null)
   });
 
   handle(LOGOUT, () => {
@@ -69,5 +70,11 @@ export const initMetaStore = () => {
     metaStore.activeCarModel = carModelId;
     dispatch(CAR_MODEL_SELECTION_CHANGE, metaStore.activeCarModel);
   });
+
+  handle(FILTER_CAR_MODELS, (filter) => {
+    metaStore.carModelFilter = filter;
+    const filteredModels = CarModelService.filterByModel(metaStore.cars, filter);
+    dispatch(CAR_LIST_CHANGE, filteredModels);
+  })
 
 };
