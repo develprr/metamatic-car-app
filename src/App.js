@@ -40,7 +40,7 @@ export class App extends React.Component {
           <AppTitle name="Cars"/>
           {viewComponent}
         </div>
-    );
+    );gi
   }
 }
 
