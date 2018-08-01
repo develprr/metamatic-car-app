@@ -4,10 +4,6 @@ import {LOGOUT, NAVIGATE_BACK} from '../store/MetaStore';
 
 export class Navigation extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   onBackButtonClicked() {
     dispatch(NAVIGATE_BACK);
   }
@@ -38,6 +34,7 @@ export class Navigation extends React.Component {
               <span className="glyphicon glyphicon-log-out" aria-hidden="true"></span> Exit
             </button>
           </div>
+
         </div>
     );
   }
