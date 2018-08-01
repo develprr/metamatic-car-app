@@ -1,17 +1,34 @@
 import React from 'react';
-import { CarModelList} from './CarModelList.js';
-import { CarModelService } from '../service/CarModelService.js';
+import {CarModelList} from './CarModelList.js';
+import {CarModelService} from '../service/CarModelService.js';
+import {dispatch, handle, unhandle} from 'synchronous-dispatcher';
+import {CAR_LIST_CHANGE, REQUEST_CAR_LIST} from '../store/MetaStore';
+
 export class CarFilterList extends React.Component {
 
 	constructor(props) {
 		super(props);
-		let carModels = CarModelService.findAll();
-		this.state = { carModels: carModels, initialCarModels: carModels };
+    this.state = {
+      carModels: [],
+      initialCarModels: []
+    };
+    handle(CAR_LIST_CHANGE, this.constructor.name, (carModels) => {
+      carModels = Object.values(carModels);
+      this.setState({carModels: carModels, carModels: carModels});
+    });
+  }
+
+  componentDidMount() {
+    dispatch(REQUEST_CAR_LIST);
+  }
+
+  componentWillUnmount() {
+		unhandle(CAR_LIST_CHANGE, this.constructor.name);
 	}
 
 	handleSearchPhraseChange =(event) => {
-		var searchPhrase = event.target.value;
-		var filteredModels = CarModelService.filterByName(searchPhrase);
+    const searchPhrase = event.target.value;
+    const filteredModels = CarModelService.filterByName(searchPhrase);
 		this.setState({carModels: filteredModels});
 	}
 
