@@ -13,10 +13,15 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT = 'LOGOUT';
 export const NAVIGATE_BACK = 'NAVIGATE_BACK'
 export const LOGIN_STATE_CHANGE = 'LOGIN_STATE_CHANGE';
+export const CAR_MODEL_SELECTED = 'CAR_MODEL_SELECTED';
+export const CAR_MODEL_SELECTION_CHANGE = 'CAR_MODEL_SELECTION_CHANGE';
+
 
 const metaStore = {
   carDetails: null,
-  loggedIn: false
+  loggedIn: false,
+  lastCarModel: null,
+  activeCarModel: null
 };
 
 export const initMetaStore = () => {
@@ -41,16 +46,25 @@ export const initMetaStore = () => {
   });
 
   handle(SUBMIT_LOGIN, (credentials) => {
-    axios.post(LOGIN_URL, credentials)
-    .then(response => {
-      metaStore.loggedIn = true;
-      dispatch(LOGIN_STATE_CHANGE, metaStore.loggedIn)
-    }).catch(error => dispatch(LOGIN_FAILURE, error));
+    metaStore.loggedIn = true;
+    dispatch(LOGIN_STATE_CHANGE, metaStore.loggedIn);
+  });
+
+  handle(NAVIGATE_BACK, () => {
+    metaStore.lastCarModel = metaStore.activeCarModel;
+    metaStore.activeCarModel = null;
+    dispatch(CAR_MODEL_SELECTION_CHANGE)
   });
 
   handle(LOGOUT, () => {
+    console.log('MetaStore:LOGOUT');
     metaStore.loggedIn = false;
     dispatch(LOGIN_STATE_CHANGE, metaStore.loggedIn);
-  })
+  });
+
+  handle(CAR_MODEL_SELECTED, (carModelId) => {
+    metaStore.activeCarModel = carModelId;
+    dispatch(CAR_MODEL_SELECTION_CHANGE, metaStore.activeCarModel);
+  });
 
 };
