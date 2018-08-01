@@ -9,7 +9,7 @@ import {Login} from './component/Login.js';
 import {handle} from 'synchronous-dispatcher';
 import {initMetaStore, LOGIN_STATE_CHANGE, LOGOUT} from './store/MetaStore';
 
-class App extends React.Component {
+export class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -43,5 +43,3 @@ ReactDOM.render(
     <App/>,
     document.getElementById('root')
 );
-
-export default App;
