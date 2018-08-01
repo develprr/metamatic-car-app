@@ -1,8 +1,7 @@
 import React from 'react';
 import {CarModelList} from './CarModelList.js';
-import {CarModelService} from '../service/CarModelService.js';
 import {dispatch, handle, unhandle} from 'synchronous-dispatcher';
-import {CAR_LIST_CHANGE, REQUEST_CAR_LIST} from '../store/MetaStore';
+import {CAR_LIST_CHANGE, FILTER_CAR_MODELS, REQUEST_CAR_LIST} from '../store/MetaStore';
 
 export class CarFilterList extends React.Component {
 
@@ -14,7 +13,7 @@ export class CarFilterList extends React.Component {
     };
     handle(CAR_LIST_CHANGE, this.constructor.name, (carModels) => {
       carModels = Object.values(carModels);
-      this.setState({carModels: carModels, carModels: carModels});
+      this.setState({carModels: carModels, initialCarModels: carModels});
     });
   }
 
@@ -28,13 +27,12 @@ export class CarFilterList extends React.Component {
 
 	handleSearchPhraseChange =(event) => {
     const searchPhrase = event.target.value;
-    const filteredModels = CarModelService.filterByName(searchPhrase);
-		this.setState({carModels: filteredModels});
+    dispatch(FILTER_CAR_MODELS, searchPhrase);
 	}
 
 	render() {
 		return (
-			<div className="form-group container-fluid">
+        <div className="form-group container-fluid">.
 				<div className="row">
 						<input className="form-control" type="text" placeholder="Search" onChange={this.handleSearchPhraseChange}/>
 				</div>
