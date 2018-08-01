@@ -10,9 +10,13 @@ export const LOAD_CAR_DATA_ERROR = 'LOAD_CAR_DATA_ERROR';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGOUT = 'LOGOUT';
+export const NAVIGATE_BACK = 'NAVIGATE_BACK'
+export const LOGIN_STATE_CHANGE = 'LOGIN_STATE_CHANGE';
 
 const metaStore = {
-  carDetails: null
+  carDetails: null,
+  loggedIn: false
 };
 
 export const initMetaStore = () => {
@@ -39,9 +43,14 @@ export const initMetaStore = () => {
   handle(SUBMIT_LOGIN, (credentials) => {
     axios.post(LOGIN_URL, credentials)
     .then(response => {
-      metaStore.accessToken = response.data;
-      dispatch(LOGIN_SUCCESS, metaStore.accessToken)
+      metaStore.loggedIn = true;
+      dispatch(LOGIN_STATE_CHANGE, metaStore.loggedIn)
     }).catch(error => dispatch(LOGIN_FAILURE, error));
   });
+
+  handle(LOGOUT, () => {
+    metaStore.loggedIn = false;
+    dispatch(LOGIN_STATE_CHANGE, metaStore.loggedIn);
+  })
 
 };
