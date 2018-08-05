@@ -1,5 +1,5 @@
 import React from 'react';
-import {dispatch} from 'synchronous-dispatcher';
+import {dispatch} from 'metamatic';
 import {SUBMIT_LOGIN} from '../store/MetaStore';
 
 export class Login extends React.Component {

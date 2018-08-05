@@ -1,5 +1,5 @@
 import React from 'react';
-import {dispatch} from 'synchronous-dispatcher';
+import {dispatch} from 'metamatic';
 import {LOGOUT, NAVIGATE_BACK} from '../store/MetaStore';
 
 export class Navigation extends React.Component {

@@ -6,7 +6,8 @@ import {AppTitle} from './component/AppTitle.js';
 import {Management} from './component/Management.js';
 import {Login} from './component/Login.js';
 
-import {attach, detach, initMetaStore, LOGIN_STATE_CHANGE} from './store/MetaStore';
+import {initMetaStore, LOGIN_STATE_CHANGE} from './store/MetaStore';
+import {connect, disconnect} from 'metamatic';
 
 export class App extends React.Component {
 
@@ -16,13 +17,13 @@ export class App extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    attach(this, LOGIN_STATE_CHANGE, (loggedIn) => {
+    connect(this, LOGIN_STATE_CHANGE, (loggedIn) => {
       this.setState({loggedIn});
     })
   }
 
   componentWillUnmount() {
-    detach(this, LOGIN_STATE_CHANGE);
+    disconnect(this);
   }
 
   createViewComponent() {

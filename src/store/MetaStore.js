@@ -1,4 +1,4 @@
-import {dispatch, handle, unhandle} from 'synchronous-dispatcher'
+import {dispatch, handle, unhandle} from 'metamatic'
 import axios from 'axios';
 import {CAR_DATA_URL} from '../constants';
 import {CarModelService} from '../service/CarModelService';
@@ -76,13 +76,4 @@ export const initMetaStore = () => {
     const filteredModels = CarModelService.filterByModel(metaStore.cars, filter);
     dispatch(CAR_LIST_CHANGE, filteredModels);
   })
-
 };
-
-export const attach = (component, eventName, action) => {
-  handle(eventName, component.constructor.name, action);
-}
-
-export const detach = (component, event) => {
-  unhandle(event, component.constructor.name);
-}

@@ -1,6 +1,6 @@
 import React from 'react';
-import {dispatch} from 'synchronous-dispatcher';
-import {CAR_LIST_CHANGE, CAR_MODEL_SELECTED, attach, detach, REQUEST_CAR_LIST} from '../store/MetaStore';
+import {dispatch, connect, disconnect} from 'metamatic';
+import {CAR_LIST_CHANGE, CAR_MODEL_SELECTED, REQUEST_CAR_LIST} from '../store/MetaStore';
 
 export class CarModelList extends React.Component {
 
@@ -9,13 +9,11 @@ export class CarModelList extends React.Component {
     this.state = {
       cars: []
     };
-    attach(this, CAR_LIST_CHANGE, (cars) => {
-      this.setState({cars: Object.values(cars)});
-    });
+    connect(this, CAR_LIST_CHANGE, (cars) => this.setState({cars: Object.values(cars)}));
   }
 
   componentWillUnmount() {
-    detach(this, CAR_LIST_CHANGE);
+    disconnect(this);
   }
 
   componentDidMount() {
