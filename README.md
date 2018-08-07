@@ -11,10 +11,7 @@ The Metamatic Framework consists of two parts:
 1) The Metamatic event functions that you install and 
 2) The MetaStore - the central state container that you implement.
 
-Check NPM package of the Metamatic Framework is available at (https://www.npmjs.com/package/metamaticr)
-
-View Source code of Synchronous Dispatcher at
-(https://github.com/develprr/synchronous-dispatcher)
+Check NPM package of the Metamatic Framework is available at (https://www.npmjs.com/package/metamatic)
 
 Read a blog article about The Metamatic Framework  at (http://www.oppikone.fi/blog/introducing-metamate-framework.html)
 
@@ -31,7 +28,7 @@ npm install
 And then run the app:
 
 ```js
-    npm start
+npm start
 ```
 
 ## Start the backend
