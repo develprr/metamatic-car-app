@@ -10,13 +10,9 @@ export class CarDetails extends React.Component {
     dispatch(REQUEST_CAR_ENTRY);
   }
 
-  componentDidMount() {
-    connect(this, CAR_ENTRY_CHANGE, (carDetails) => this.setState({carDetails}));
-  }
+  componentDidMount = () => connect(this, CAR_ENTRY_CHANGE, (carDetails) => this.setState({carDetails}));
 
-  componentWillUnmount() {
-    disconnect(this);
-  }
+  componentWillUnmount = () => disconnect(this);
 
   render() {
     let carDetails = this.state.carDetails;

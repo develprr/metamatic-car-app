@@ -26,23 +26,14 @@ export class App extends React.Component {
     disconnect(this);
   }
 
-  createViewComponent() {
-    if (this.state.loggedIn) {
-      return <Management/>;
-    } else {
-      return <Login/>;
-    }
-  }
+  getViewComponent = () => this.state.loggedIn ? <Management/> : <Login/>;
 
-  render() {
-    let viewComponent = this.createViewComponent();
-    return (
-        <div className="container-fluid">
-          <AppTitle name="Cars"/>
-          {viewComponent}
-        </div>
-    );
-  }
+  render = () => (
+    <div className="container-fluid">
+      <AppTitle name="Cars"/>
+      {this.getViewComponent()}
+    </div>
+  );
 }
 
 ReactDOM.render(
