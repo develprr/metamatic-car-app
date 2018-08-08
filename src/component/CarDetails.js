@@ -1,7 +1,6 @@
 import React from 'react';
-import {dispatch, connect, disconnect} from 'metamatic';
-import {REQUEST_CAR_ENTRY, CAR_ENTRY_CHANGE, attach, detach} from '../store/MetaStore';
-import {} from '../constants';
+import {connect, disconnect, dispatch} from 'metamatic';
+import {attach, CAR_ENTRY_CHANGE, detach, REQUEST_CAR_ENTRY} from '../store/MetaStore';
 
 export class CarDetails extends React.Component {
 

@@ -3,7 +3,6 @@ import {CarFilterList} from './CarFilterList.js';
 import {Navigation} from './Navigation.js';
 import {connectAll, disconnect} from 'metamatic';
 import {CarDetails} from './CarDetails';
-import {CAR_MODEL_SELECTION_CHANGE, LOGIN_STATE_CHANGE, attach, detach} from '../store/MetaStore';
 
 export class Management extends React.Component {
 
