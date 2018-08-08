@@ -1,7 +1,7 @@
 import React from 'react';
 import {CarModelList} from './CarModelList.js';
-import {connect, disconnect, dispatch} from 'metamatic';
-import {attach, CAR_LIST_CHANGE, detach, FILTER_CAR_MODELS, REQUEST_CAR_LIST} from '../store/MetaStore';
+import {connect, disconnect} from 'metamatic';
+import {attach, CAR_LIST_CHANGE, filterCarModels, requestCarList} from '../store/MetaStore';
 
 export class CarFilterList extends React.Component {
 
@@ -17,11 +17,11 @@ export class CarFilterList extends React.Component {
     });
   }
 
-  componentDidMount = () => dispatch(REQUEST_CAR_LIST);
+  componentDidMount = () => requestCarList();
 
   componentWillUnmount = () => disconnect(this);
 
-	handleSearchPhraseChange = (event) => dispatch(FILTER_CAR_MODELS, event.target.value);
+	handleSearchPhraseChange = (event) => filterCarModels(event.target.value);
 
 	render = () => (
 	  <div className="form-group container-fluid">.

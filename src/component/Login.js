@@ -1,6 +1,6 @@
 import React from 'react';
 import {dispatch} from 'metamatic';
-import {SUBMIT_LOGIN} from '../store/MetaStore';
+import {SUBMIT_LOGIN, submitLogin} from '../store/MetaStore';
 
 export class Login extends React.Component {
 
@@ -16,7 +16,7 @@ export class Login extends React.Component {
 
   updatePassword = (event) => this.setState(...this.state, {password: event.target.value});
 
-  handleSubmit = (event) => dispatch(SUBMIT_LOGIN, this.state);
+  handleSubmit = (event) => submitLogin(this.state);
 
   render = () => (
       <form>

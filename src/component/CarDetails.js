@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect, disconnect, dispatch} from 'metamatic';
-import {attach, CAR_ENTRY_CHANGE, detach, REQUEST_CAR_ENTRY} from '../store/MetaStore';
+import {connect, disconnect} from 'metamatic';
+import {attach, CAR_ENTRY_CHANGE, requestCarEntry} from '../store/MetaStore';
 
 export class CarDetails extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {};
-    dispatch(REQUEST_CAR_ENTRY);
+    requestCarEntry();
   }
 
   componentDidMount = () => connect(this, CAR_ENTRY_CHANGE, (carDetails) => this.setState({carDetails}));
