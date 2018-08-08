@@ -1,8 +1,8 @@
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var express = require('express');
-var path = require('path');
-var app = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const express = require('express');
+const path = require('path');
+const app = express();
 
 app.use(bodyParser.urlencoded({
   extended: true
