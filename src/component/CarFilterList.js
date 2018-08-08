@@ -17,29 +17,21 @@ export class CarFilterList extends React.Component {
     });
   }
 
-  componentDidMount() {
-    dispatch(REQUEST_CAR_LIST);
-  }
+  componentDidMount = () => dispatch(REQUEST_CAR_LIST);
 
-  componentWillUnmount() {
-		disconnect(this);
-	}
+  componentWillUnmount = () => disconnect(this);
 
-	handleSearchPhraseChange =(event) => {
-    const searchPhrase = event.target.value;
-    dispatch(FILTER_CAR_MODELS, searchPhrase);
-	}
+	handleSearchPhraseChange = (event) => dispatch(FILTER_CAR_MODELS, event.target.value);
 
-	render() {
-		return (
-        <div className="form-group container-fluid">.
-				<div className="row">
-						<input className="form-control" type="text" placeholder="Search" onChange={this.handleSearchPhraseChange}/>
-				</div>
-        <div className="row">
-          <CarModelList items={this.state.carModels}/>
-        </div>
-			</div>
-		);
- 	 }
+	render = () => (
+	  <div className="form-group container-fluid">.
+      <div className="row">
+        <input className="form-control" type="text" placeholder="Search" onChange={this.handleSearchPhraseChange}/>
+      </div>
+      <div className="row">
+        <CarModelList items={this.state.carModels}/>
+      </div>
+    </div>
+  );
+
 }

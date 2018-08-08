@@ -12,24 +12,16 @@ export class CarModelList extends React.Component {
     connect(this, CAR_LIST_CHANGE, (cars) => this.setState({cars: Object.values(cars)}));
   }
 
-  componentWillUnmount() {
-    disconnect(this);
-  }
+  componentWillUnmount = () => disconnect(this);
 
-  componentDidMount() {
-    dispatch(REQUEST_CAR_LIST);
-  }
+  componentDidMount = () => dispatch(REQUEST_CAR_LIST);
 
-  render() {
-    const cars = this.state.cars;
-    const itemMap = cars.map((item) =>
+  getCarList = () => this.state.cars.map((item) =>
       <li className="list-group-item" data-id={item.id} onClick={() => {dispatch(CAR_MODEL_SELECTED, item.id)}} key={item.model.toString()}>
         {item.model}
       </li>
-    );
-    return (
-        <ul className="list-group">{itemMap}</ul>
-    );
-  }
+  );
+
+  render = () => <ul className="list-group">{this.getCarList()}</ul>;
 
 }

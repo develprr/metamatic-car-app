@@ -78,7 +78,7 @@ app.get('/api/cars', function (req, res) {
   res.json(getCars());
 });
 
-app.get('/api/cars/:id', function (req, res) {
+app.get('/api/cars/:id', (req, res) => {
   const id = req.params.id;
   res.json(getCarById(id));
 });

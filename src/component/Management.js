@@ -15,22 +15,17 @@ export class Management extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    disconnect(this);
-  }
+  componentWillUnmount = () => disconnect(this);
 
-  createViewComponent() {
-    return this.state.selectedCarModel ? <CarDetails/> : <CarFilterList/>;
-  }
+  getViewComponent = () => this.state.selectedCarModel ? <CarDetails/> : <CarFilterList/>;
 
-  render() {
-    var viewComponent = this.createViewComponent();
-    let backButtonEnabled = this.state.selectedCarModel ? true : false;
-    return (
-        <div className="App">
-          <Navigation backButtonEnabled={backButtonEnabled}/>
-          {viewComponent}
-        </div>
-    );
-  }
+  isBackButtonEnabled = () => this.state.selectedCarModel !== null;
+
+  render = () => this.isBackButtonEnabled ? (
+    <div className="App">
+      <Navigation backButtonEnabled={this.isBackButtonEnabled()}/>
+      {this.getViewComponent()}
+    </div>
+  ) : null;
+
 }
