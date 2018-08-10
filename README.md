@@ -1,11 +1,10 @@
-# The Metamatic Car App (Two-Way-Events Variant)
+# The Metamatic Car App
 A demo app for showcasing The Metamatic Framework.
 
 ### Introduction
 
 A demo app written in ES6 on React to demonstrate how to implement the MetaStore, which is a central data store in your app
-taking advantage of the [Metamatic Framework](https://www.npmjs.com/package/metamatic). Read more about the ideas behind
-the Metamatic framework in an [introductory article](http://www.oppikone.fi/blog/introducing-metamate-framework.html).
+taking advantage of the Metamatic Framework.
 
 The Metamatic Framework consists of two parts:
 
@@ -15,12 +14,6 @@ The Metamatic Framework consists of two parts:
 Check NPM package of the Metamatic Framework is available at (https://www.npmjs.com/package/metamatic)
 
 Read a blog article about The Metamatic Framework  at (http://www.oppikone.fi/blog/introducing-metamate-framework.html)
-
-## Two-Way-Events Variant
-
-This project demonstrates the Two-Way-Events variant of the Metamatic State Container. 
-You may also like to check the (One-Way-Events variant)[https://github.com/develprr/metamatic-car-app-with-one-way-events].
-To read more about implementing a state container, read a related (blog post)[http://www.oppikone.fi/blog/implementing-metamatic-state-container.html].
 
 ## Start the frontend
 
@@ -61,8 +54,4 @@ node car-server.js
     
 ## License
 
-Apache 2.0
-
-## Author
-
-[Heikki Kupiainen](https://www.linkedin.com/in/heikki-kupiainen-oppikone) / (Metamatic)[http:/www.metamatic.net]
+MIT
