@@ -1,4 +1,4 @@
-import {dispatch, handle, unhandle} from 'metamatic'
+import {dispatch, handle} from 'metamatic'
 import axios from 'axios';
 import {CAR_DATA_URL} from '../constants';
 import {CarModelService} from '../service/CarModelService';
