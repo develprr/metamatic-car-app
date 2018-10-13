@@ -1,27 +1,22 @@
 import React from 'react';
 import {CarModelList} from './CarModelList.js';
-import {connect, disconnect, dispatch} from 'metamatic';
-import {attach, CAR_LIST_CHANGE, detach, FILTER_CAR_MODELS, REQUEST_CAR_LIST} from '../store/MetaStore';
+import {connect, disconnect} from 'metamatic';
+
+import {CAR_MODEL_LIST_STATE} from '../config/states';
+import {filterCarModels} from '../states/CarModelState';
 
 export class CarFilterList extends React.Component {
 
 	constructor(props) {
 		super(props);
-    this.state = {
-      carModels: [],
-      initialCarModels: []
-    };
-    connect(this, CAR_LIST_CHANGE, (carModels) => {
-      carModels = Object.values(carModels);
-      this.setState({carModels: carModels, initialCarModels: carModels});
-    });
+    this.state = {};
   }
 
-  componentDidMount = () => dispatch(REQUEST_CAR_LIST);
+  componentDidMount = () => connect(this, CAR_MODEL_LIST_STATE, (carModelListState) => this.setState(carModelListState));
 
   componentWillUnmount = () => disconnect(this);
 
-	handleSearchPhraseChange = (event) => dispatch(FILTER_CAR_MODELS, event.target.value);
+	handleSearchPhraseChange = (event) => filterCarModels(event.target.value);
 
 	render = () => (
 	  <div className="form-group container-fluid">.

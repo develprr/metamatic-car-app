@@ -1,6 +1,5 @@
 import React from 'react';
-import {dispatch} from 'metamatic';
-import {SUBMIT_LOGIN} from '../store/MetaStore';
+import {submitLogin} from '../states/AccessState';
 
 export class Login extends React.Component {
 
@@ -16,17 +15,17 @@ export class Login extends React.Component {
 
   updatePassword = (event) => this.setState(...this.state, {password: event.target.value});
 
-  handleSubmit = (event) => dispatch(SUBMIT_LOGIN, this.state);
+  handleSubmit = (event) => submitLogin(this.state);
 
   render = () => (
       <form>
         <div className="form-group">
           <label htmlFor="email">Email address:</label>
-          <input type="email" className="form-control" id="email" onChange={this.updateEmail}/>
+          <input type="email" className="form-control" id="email" placeholder={"Just type anything and click submit"} onChange={this.updateEmail}/>
         </div>
         <div className="form-group">
           <label htmlFor="pwd">Password:</label>
-          <input type="password" className="form-control" id="pwd" onChange={this.updatePassword}/>
+          <input type="password" className="form-control" id="pwd" placeholder={"Just type anything and click submit"} onChange={this.updatePassword}/>
         </div>
         <div className="checkbox">
           <label><input type="checkbox"/> Remember me</label>

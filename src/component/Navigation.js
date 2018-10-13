@@ -1,12 +1,12 @@
 import React from 'react';
-import {dispatch} from 'metamatic';
-import {LOGOUT, NAVIGATE_BACK} from '../store/MetaStore';
+import {navigateBack} from '../states/NavigationState';
+import {logout} from '../states/AccessState';
 
 export class Navigation extends React.Component {
 
-  onBackButtonClicked = () => dispatch(NAVIGATE_BACK);
+  onBackButtonClicked = () => navigateBack();
 
-  onExitButtonClicked = () => dispatch(LOGOUT);
+  onExitButtonClicked = () => logout();
 
   getBackButton = () => this.props.backButtonEnabled ? (
       <button id="back-button" type="button" className="btn btn-default btn-lg pull-left" onClick={this.onBackButtonClicked}>

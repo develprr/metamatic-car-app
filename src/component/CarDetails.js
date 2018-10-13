@@ -1,21 +1,20 @@
 import React from 'react';
-import {connect, disconnect, dispatch} from 'metamatic';
-import {attach, CAR_ENTRY_CHANGE, detach, REQUEST_CAR_ENTRY} from '../store/MetaStore';
+import {connect, disconnect} from 'metamatic';
+import {CAR_MODEL_ITEM_STATE} from '../config/states';
 
 export class CarDetails extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {};
-    dispatch(REQUEST_CAR_ENTRY);
   }
 
-  componentDidMount = () => connect(this, CAR_ENTRY_CHANGE, (carDetails) => this.setState({carDetails}));
+  componentDidMount = () => connect(this, CAR_MODEL_ITEM_STATE, (state) => this.setState(state));
 
   componentWillUnmount = () => disconnect(this);
 
   render() {
-    let carDetails = this.state.carDetails;
+    let carDetails = this.state.carModelDetails;
     return carDetails ? (
         <ul className="list-group">
           <li className="list-group-item"><h3>{carDetails.model}</h3></li>

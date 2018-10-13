@@ -1,23 +1,25 @@
 import React from 'react';
-import {connect, disconnect, dispatch} from 'metamatic';
-import {CAR_LIST_CHANGE, CAR_MODEL_SELECTED, REQUEST_CAR_LIST} from '../store/MetaStore';
+import {connect, disconnect} from 'metamatic';
+import {CAR_MODEL_LIST_STATE} from '../config/states';
+import {ATTR_FILTERED_CAR_MODELS, selectCarModel} from '../states/CarModelState';
 
 export class CarModelList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      cars: []
-    };
-    connect(this, CAR_LIST_CHANGE, (cars) => this.setState({cars: Object.values(cars)}));
+    this.state = {};
   }
+
+  componentDidMount = () => connect(this, CAR_MODEL_LIST_STATE, (state) => this.setState(state));
 
   componentWillUnmount = () => disconnect(this);
 
-  componentDidMount = () => dispatch(REQUEST_CAR_LIST);
+  getCarModels = () => this.state[ATTR_FILTERED_CAR_MODELS] || [];
 
-  getCarList = () => this.state.cars.map((item) =>
-    <li className="list-group-item" data-id={item.id} onClick={() => {dispatch(CAR_MODEL_SELECTED, item.id)}} key={item.model.toString()}>
+  selectCarModel = (event) => selectCarModel(event.target.getAttribute('data-id'));
+
+  getCarList = () => this.getCarModels().map((item) =>
+      <li className="list-group-item" data-id={item.id} onClick={this.selectCarModel} key={item.model.toString()}>
       {item.model}
     </li>
   );
