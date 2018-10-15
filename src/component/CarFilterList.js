@@ -7,8 +7,8 @@ import {filterCarModels} from '../states/CarModelState';
 
 export class CarFilterList extends React.Component {
 
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -16,17 +16,17 @@ export class CarFilterList extends React.Component {
 
   componentWillUnmount = () => disconnect(this);
 
-	handleSearchPhraseChange = (event) => filterCarModels(event.target.value);
+  handleSearchPhraseChange = (event) => filterCarModels(event.target.value);
 
-	render = () => (
-	  <div className="form-group container-fluid">.
-      <div className="row">
-        <input className="form-control" type="text" placeholder="Search" onChange={this.handleSearchPhraseChange}/>
+  render = () => (
+      <div className="form-group container-fluid">.
+        <div className="row">
+          <input className="form-control" type="text" placeholder="Search" onChange={this.handleSearchPhraseChange}/>
+        </div>
+        <div className="row">
+          <CarModelList items={this.state.carModels}/>
+        </div>
       </div>
-      <div className="row">
-        <CarModelList items={this.state.carModels}/>
-      </div>
-    </div>
   );
 
 }
