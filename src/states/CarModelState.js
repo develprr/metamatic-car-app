@@ -8,17 +8,12 @@ export const ATTR_FILTERED_CAR_MODELS = 'filteredCarModels';
 export const ATTR_ACTIVE_CAR_MODEL_ID = 'activeCarModelId';
 export const ATTR_CAR_MODEL_DETAILS = 'carModelDetails';
 
-export const CarModelState = () => {
-  console.log('CarState:loadCarModelList');
-  loadCarModelList();
-}
+export const CarModelState = () => loadCarModelList();
 
 const getAllModels = () => getState(CAR_MODEL_LIST_STATE, ATTR_ALL_CAR_MODELS);
 
 export const filterCarModels = (filter) => {
-  console.log('CarModelState:filterCarModels:filter', filter);
   const allCarModels = getAllModels();
-  console.log('CarModelState:filterCarModels:models', allCarModels);
   const filteredModels = filterByModel(allCarModels, filter);
   updateState(CAR_MODEL_LIST_STATE, {
     [ATTR_FILTERED_CAR_MODELS]: filteredModels
@@ -32,17 +27,12 @@ export const selectCarModel = (activeCarModelId) => {
   loadCarModelDetails(activeCarModelId)
 }
 
-export const loadCarModelList = () => {
-  console.log('CarModelState:loadCarModelList');
-  axios.get(`${CAR_DATA_URL}`).then((response) => updateCarModelList(response.data));
-}
+export const loadCarModelList = () => axios.get(`${CAR_DATA_URL}`).then((response) => updateCarModelList(response.data));
 
-const updateCarModelList = (allCarModels) => {
-  updateState(CAR_MODEL_LIST_STATE, {
+const updateCarModelList = (allCarModels) => updateState(CAR_MODEL_LIST_STATE, {
     [ATTR_ALL_CAR_MODELS]: allCarModels,
     [ATTR_FILTERED_CAR_MODELS]: allCarModels
   });
-}
 
 export const loadCarModelDetails = (carModelId) => {
   axios.get(`${CAR_DATA_URL}/${carModelId}`)
