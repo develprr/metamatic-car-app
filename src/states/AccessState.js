@@ -1,8 +1,7 @@
-import {setState, updateState} from 'metamatic'
+import {initState, updateState} from 'metamatic'
 import {ACCESS_STATE} from '../config/states';
 
-
-export const AccessState = () => setState(ACCESS_STATE, {
+export const AccessState = () => initState(ACCESS_STATE, {
   loggedIn: false
 })
 
