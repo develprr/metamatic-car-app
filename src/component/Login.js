@@ -1,7 +1,7 @@
 import React from 'react';
 import {submitLogin} from '../states/AccessState';
-
-export class Login extends React.Component {
+import withRouter from 'react-router-dom/es/withRouter';
+class Login extends React.Component {
 
   constructor(props) {
     super(props);
@@ -15,7 +15,10 @@ export class Login extends React.Component {
 
   updatePassword = (event) => this.setState(...this.state, {password: event.target.value});
 
-  handleSubmit = (event) => submitLogin(this.state);
+  handleSubmit = (event) => {
+    submitLogin(this.state);
+    this.props.history.push('/cars');
+  }
 
   render = () => (
       <form>
@@ -34,3 +37,5 @@ export class Login extends React.Component {
       </form>
   );
 }
+
+export default withRouter(Login);

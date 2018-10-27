@@ -2,8 +2,9 @@ import React from 'react';
 import {connect, disconnect} from 'metamatic';
 import {CAR_MODEL_LIST_STATE} from '../config/states';
 import {ATTR_FILTERED_CAR_MODELS, selectCarModel} from '../states/CarModelState';
+import withRouter from 'react-router-dom/es/withRouter';
 
-export class CarModelList extends React.Component {
+class CarModelList extends React.Component {
 
   constructor(props) {
     super(props);
@@ -16,7 +17,11 @@ export class CarModelList extends React.Component {
 
   getCarModels = () => this.state[ATTR_FILTERED_CAR_MODELS] || [];
 
-  selectCarModel = (event) => selectCarModel(event.target.getAttribute('data-id'));
+  selectCarModel = (event) => {
+    const carModelId = event.target.getAttribute('data-id');
+    this.props.history.push(`/cars/${carModelId}`);
+    selectCarModel(carModelId);
+  }
 
   getCarList = () => this.getCarModels().map((item) =>
       <li className="list-group-item" data-id={item.id} onClick={this.selectCarModel} key={item.model.toString()}>
@@ -27,3 +32,5 @@ export class CarModelList extends React.Component {
   render = () => <ul className="list-group">{this.getCarList()}</ul>;
 
 }
+
+export default withRouter(CarModelList);

@@ -1,6 +1,6 @@
 import React from 'react';
 import {CarFilterList} from './CarFilterList.js';
-import {Navigation} from './Navigation.js';
+import {Navigation} from './layout/header/Navigation.js';
 import {connectAll, disconnect} from 'metamatic';
 import {CarDetails} from './CarDetails';
 import {ACCESS_STATE, CAR_MODEL_ITEM_STATE} from '../config/states';

@@ -21,6 +21,7 @@ export const filterCarModels = (filter) => {
 };
 
 export const selectCarModel = (activeCarModelId) => {
+  console.log('CarModelState:selectCarModel', activeCarModelId);
   updateState(CAR_MODEL_ITEM_STATE, {
     [ATTR_ACTIVE_CAR_MODEL_ID] : activeCarModelId
   });

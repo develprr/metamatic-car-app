@@ -9,7 +9,8 @@
     "metamatic": "1.7.3",
     "promise": "8.0.1",
     "react": "16.4.1",
-    "react-dom": "16.4.1"
+    "react-dom": "16.4.1",
+    "react-router-dom": "^4.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

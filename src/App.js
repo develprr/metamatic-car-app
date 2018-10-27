@@ -1,11 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
-import {AppTitle} from './component/AppTitle.js';
 import {Management} from './component/Management.js';
-import {Login} from './component/Login.js';
+import Login from './component/Login.js';
 import {connect, disconnect} from 'metamatic';
 import {ACCESS_STATE} from './config/states';
+import {CarFilterList} from './component/CarFilterList';
+import {CarDetails} from './component/CarDetails';
+import {Route} from 'react-router-dom';
+import {Header} from './component/layout/header/Header';
 
 export class App extends React.Component {
 
@@ -20,15 +22,19 @@ export class App extends React.Component {
 
   getViewComponent = () => this.state.loggedIn ? <Management/> : <Login/>;
 
-  render = () => (
+  isLoggedIn = () => this.state.loggedIn === true;
+
+  render = () => this.isLoggedIn() ? (
     <div className="container-fluid">
-      <AppTitle name="Cars"/>
-      {this.getViewComponent()}
+      <Route path='/' component={Header}/>
+      <Route exact path='/cars' component={CarFilterList}/>
+      <Route exact path='/cars/:carId' component={CarDetails}/>
     </div>
+  ) : (
+      <div className="container-fluid">
+        <Route path='/' component={Header}/>
+        <Login/>
+      </div>
   );
 }
 
-ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
-);

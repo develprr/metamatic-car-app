@@ -1,6 +1,6 @@
 import React from 'react';
-import {navigateBack} from '../states/NavigationState';
-import {logout} from '../states/AccessState';
+import {navigateBack} from '../../../states/NavigationState';
+import {logout} from '../../../states/AccessState';
 
 export class Navigation extends React.Component {
 
@@ -15,7 +15,7 @@ export class Navigation extends React.Component {
   ) : null;
 
   render = () => (
-      <div id="navigation-div" className="row">
+      <div id="navigation-div" className="row navigation-div">
         <div className="col-xs-12">
           {this.getBackButton()}
           <button id="exit-button" type="button" className="btn btn-default btn-lg pull-right" onClick={this.onExitButtonClicked}>

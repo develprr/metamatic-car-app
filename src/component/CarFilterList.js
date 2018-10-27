@@ -1,5 +1,5 @@
 import React from 'react';
-import {CarModelList} from './CarModelList.js';
+import CarModelList from './CarModelList.js';
 import {connect, disconnect} from 'metamatic';
 
 import {CAR_MODEL_LIST_STATE} from '../config/states';
