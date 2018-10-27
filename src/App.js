@@ -8,6 +8,7 @@ import {CarFilterList} from './component/CarFilterList';
 import {CarDetails} from './component/CarDetails';
 import {Route} from 'react-router-dom';
 import {Header} from './component/layout/header/Header';
+import BrowserRouter from 'react-router-dom/es/BrowserRouter';
 
 export class App extends React.Component {
 
@@ -24,8 +25,8 @@ export class App extends React.Component {
 
   isLoggedIn = () => this.state.loggedIn === true;
 
-  render = () => this.isLoggedIn() ? (
-    <div className="container-fluid">
+  renderContent = () => this.isLoggedIn() ? (
+      <div className="containser-fluid">
       <Route path='/' component={Header}/>
       <Route exact path='/cars' component={CarFilterList}/>
       <Route exact path='/cars/:carId' component={CarDetails}/>
@@ -36,5 +37,11 @@ export class App extends React.Component {
         <Login/>
       </div>
   );
+
+  render = () => (
+      <BrowserRouter>
+        {this.renderContent()}
+      </BrowserRouter>
+  )
 }
 
