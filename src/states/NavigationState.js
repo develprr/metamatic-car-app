@@ -1,11 +1,13 @@
-import {CAR_MODEL_ITEM_STATE} from '../config/states';
-import {updateState} from 'metamatic';
-import {ATTR_ACTIVE_CAR_MODEL_ID, ATTR_CAR_MODEL_DETAILS} from './CarModelState';
+import {STATE_AUTHORIZATION, STATE_CAR_MODEL_ITEM, STATE_NAVIGATION} from '../config/states';
+import {initState, updateState, handleEvent} from 'metamatic';
 
 export const NavigationState = () => {
-};
+  initState(STATE_AUTHORIZATION, {
+    backButtonEnabled: false
+  });
+  handleEvent(STATE_CAR_MODEL_ITEM, (carModelState) => updateHomeButtonState(carModelState.activeCarModelId));
+}
 
-export const navigateBack = () => updateState(CAR_MODEL_ITEM_STATE, {
-  [ATTR_ACTIVE_CAR_MODEL_ID]: null,
-  [ATTR_CAR_MODEL_DETAILS]: null
+const updateHomeButtonState = (activeCarModelId) => updateState(STATE_NAVIGATION, {
+  showHomeButton: activeCarModelId ? true : false
 });
