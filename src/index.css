@@ -7,3 +7,7 @@ body {
 .navigation-div {
   margin-top: 10px;
 }
+
+.car-list-group {
+  cursor: pointer;
+}
