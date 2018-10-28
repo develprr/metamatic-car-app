@@ -3,20 +3,21 @@ import {CarFilterList} from './CarFilterList.js';
 import {Navigation} from './layout/header/Navigation.js';
 import {connectAll, disconnect} from 'metamatic';
 import {CarDetails} from './CarDetails';
-import {ACCESS_STATE, CAR_MODEL_ITEM_STATE} from '../config/states';
+import {STATE_AUTHORIZATION, STATE_CAR_MODEL_ITEM} from '../config/states';
 import {ATTR_CAR_MODEL_DETAILS} from '../states/CarModelState';
 
 export class Management extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {loggedIn: true};
-
+    this.state = {
+      loggedIn: true
+    };
   }
 
   componentDidMount = () => connectAll(this, {
-    [ACCESS_STATE]: (state) => this.setState({...this.state, ...state}),
-    [CAR_MODEL_ITEM_STATE]: (state) => this.setState({...this.state, ...state}),
+    [STATE_AUTHORIZATION]: (state) => this.setState({...this.state, ...state}),
+    [STATE_CAR_MODEL_ITEM]: (state) => this.setState({...this.state, ...state}),
   });
 
   componentWillUnmount = () => disconnect(this);

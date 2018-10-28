@@ -2,7 +2,7 @@ import React from 'react';
 import CarModelList from './CarModelList.js';
 import {connect, disconnect} from 'metamatic';
 
-import {CAR_MODEL_LIST_STATE} from '../config/states';
+import {STATE_CAR_MODEL_LIST} from '../config/states';
 import {filterCarModels} from '../states/CarModelState';
 
 export class CarFilterList extends React.Component {
@@ -12,7 +12,7 @@ export class CarFilterList extends React.Component {
     this.state = {};
   }
 
-  componentDidMount = () => connect(this, CAR_MODEL_LIST_STATE, (carModelListState) => this.setState(carModelListState));
+  componentDidMount = () => connect(this, STATE_CAR_MODEL_LIST, (carModelListState) => this.setState(carModelListState));
 
   componentWillUnmount = () => disconnect(this);
 

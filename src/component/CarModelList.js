@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect, disconnect} from 'metamatic';
-import {CAR_MODEL_LIST_STATE} from '../config/states';
+import {STATE_CAR_MODEL_LIST} from '../config/states';
 import {ATTR_FILTERED_CAR_MODELS, selectCarModel} from '../states/CarModelState';
 import withRouter from 'react-router-dom/es/withRouter';
 
@@ -11,7 +11,7 @@ class CarModelList extends React.Component {
     this.state = {};
   }
 
-  componentDidMount = () => connect(this, CAR_MODEL_LIST_STATE, (state) => this.setState(state));
+  componentDidMount = () => connect(this, STATE_CAR_MODEL_LIST, (state) => this.setState(state));
 
   componentWillUnmount = () => disconnect(this);
 
@@ -29,7 +29,7 @@ class CarModelList extends React.Component {
     </li>
   );
 
-  render = () => <ul className="list-group">{this.getCarList()}</ul>;
+  render = () => <ul className="list-group car-list-group">{this.getCarList()}</ul>;
 
 }
 

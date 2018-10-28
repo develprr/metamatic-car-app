@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {AppTitle} from './AppTitle';
-import {Navigation} from './Navigation';
+import Navigation from './Navigation';
 import {connect} from 'metamatic';
-import {ACCESS_STATE} from '../../../config/states';
+import {STATE_AUTHORIZATION} from '../../../config/states';
 
 export class Header extends Component {
 
@@ -11,7 +11,7 @@ export class Header extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => connect(this, ACCESS_STATE, (state) => this.setState(state));
+  componentDidMount = () => connect(this, STATE_AUTHORIZATION, (state) => this.setState(state));
 
   isLoggedIn = () => this.state.loggedIn === true;
 

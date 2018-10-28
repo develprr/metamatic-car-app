@@ -1,6 +1,6 @@
 import React from 'react';
-import {submitLogin} from '../states/AccessState';
-import withRouter from 'react-router-dom/es/withRouter';
+import {submitLogin} from '../states/AuthorizationState';
+import withRouter from 'react-router-dom/withRouter';
 class Login extends React.Component {
 
   constructor(props) {
