@@ -1,16 +1,31 @@
-import React from 'react';
-import {navigateBack} from '../../../states/NavigationState';
-import {logout} from '../../../states/AccessState';
+import React, {Component} from 'react';
+import withRouter from 'react-router-dom/withRouter';
+import {logout} from '../../../states/AuthorizationState';
+import {connect} from 'metamatic';
+import {STATE_NAVIGATION} from '../../../config/states';
+import {clearCarModelSelection} from '../../../states/CarModelState';
 
-export class Navigation extends React.Component {
+class Navigation extends Component {
 
-  onBackButtonClicked = () => navigateBack();
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount = () => connect(this, STATE_NAVIGATION, (navigationState) => this.setState(navigationState));
+
+  onHomeButtonClicked = () => {
+    clearCarModelSelection();
+    this.props.history.push('/cars');
+  }
 
   onExitButtonClicked = () => logout();
 
-  getBackButton = () => this.props.backButtonEnabled ? (
-      <button id="back-button" type="button" className="btn btn-default btn-lg pull-left" onClick={this.onBackButtonClicked}>
-        <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+  isHomeButtonEnabled = () => this.state.showHomeButton;
+
+  getBackButton = () => this.isHomeButtonEnabled() ? (
+      <button id="back-button" type="button" className="btn btn-default btn-lg pull-left" onClick={this.onHomeButtonClicked}>
+        <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Home
       </button>
   ) : null;
 
@@ -24,6 +39,7 @@ export class Navigation extends React.Component {
         </div>
 
       </div>
-  );
+  )
 }
 
+export default withRouter(Navigation);
