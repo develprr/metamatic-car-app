@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {App} from './App';
 import './index.css';
-import {initStates} from './states/_index';
+import {initStores} from './states/_index';
 
-initStates();
-
+initStores();
 
 ReactDOM.render(
     <App/>,

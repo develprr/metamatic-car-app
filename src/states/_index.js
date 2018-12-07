@@ -1,9 +1,9 @@
-import {CarModelState} from './CarModelState';
-import {AuthorizationState} from './AuthorizationState';
-import {NavigationState} from './NavigationState';
+import {CarModelStore} from './CarModelStore';
+import {AuthorizationStore} from './AuthorizationStore';
+import {NavigationState} from './NavigationStore';
 
-export const initStates = () => {
-  AuthorizationState();
-  CarModelState();
+export const initStores = () => {
+  AuthorizationStore();
+  CarModelStore();
   NavigationState();
 }

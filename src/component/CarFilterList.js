@@ -1,9 +1,9 @@
 import React from 'react';
 import CarModelList from './CarModelList.js';
-import {connect, disconnect} from 'metamatic';
+import {connectToStore, disconnectFromStores} from 'metamatic';
 
 import {STATE_CAR_MODEL_LIST} from '../config/states';
-import {filterCarModels} from '../states/CarModelState';
+import {filterCarModels} from '../states/CarModelStore';
 
 export class CarFilterList extends React.Component {
 
@@ -12,14 +12,14 @@ export class CarFilterList extends React.Component {
     this.state = {};
   }
 
-  componentDidMount = () => connect(this, STATE_CAR_MODEL_LIST, (carModelListState) => this.setState(carModelListState));
+  componentDidMount = () => connectToStore(this, STATE_CAR_MODEL_LIST, (carModelListState) => this.setState(carModelListState));
 
-  componentWillUnmount = () => disconnect(this);
+  componentWillUnmount = () => disconnectFromStores(this);
 
   handleSearchPhraseChange = (event) => filterCarModels(event.target.value);
 
   render = () => (
-      <div className="form-group container-fluid">.
+      <div className="form-group container-fluid">
         <div className="row">
           <input className="form-control" type="text" placeholder="Search" onChange={this.handleSearchPhraseChange}/>
         </div>

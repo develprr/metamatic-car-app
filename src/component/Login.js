@@ -1,5 +1,5 @@
 import React from 'react';
-import {submitLogin} from '../states/AuthorizationState';
+import {submitLogin} from '../states/AuthorizationStore';
 import withRouter from 'react-router-dom/withRouter';
 class Login extends React.Component {
 

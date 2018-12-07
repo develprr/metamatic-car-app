@@ -1,12 +1,12 @@
 {
   "name": "metamatic-car-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "react-scripts": "1.1.4"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "metamatic": "1.7.3",
+    "metamatic": "2.1.0",
     "promise": "8.0.1",
     "react": "16.4.1",
     "react-dom": "16.4.1",
@@ -18,5 +18,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "http://www.oppikone.fi/blog/introducing-metamate-framework.html"
+  "homepage": "https://www.npmjs.com/package/metamatic"
 }

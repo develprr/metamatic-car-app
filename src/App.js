@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './component/Login.js';
-import {connect, disconnect} from 'metamatic';
+import {connectToStore, disconnectFromStores} from 'metamatic';
 import {STATE_AUTHORIZATION} from './config/states';
 import {CarFilterList} from './component/CarFilterList';
 import {CarDetails} from './component/CarDetails';
@@ -16,9 +16,9 @@ export class App extends React.Component {
     this.state = {};
   }
 
-  componentDidMount = () => connect(this, STATE_AUTHORIZATION, (state) => this.setState(state));
+  componentDidMount = () => connectToStore(this, STATE_AUTHORIZATION, (state) => this.setState(state));
 
-  componentWillUnmount = () => disconnect(this);
+  componentWillUnmount = () => disconnectFromStores(this);
 
   isLoggedIn = () => this.state.loggedIn === true;
 

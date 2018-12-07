@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect, disconnect} from 'metamatic';
+import {connectToStore, disconnectFromStores} from 'metamatic';
 import {STATE_CAR_MODEL_ITEM} from '../config/states';
 
 export class CarDetails extends React.Component {
@@ -9,9 +9,9 @@ export class CarDetails extends React.Component {
     this.state = {};
   }
 
-  componentDidMount = () => connect(this, STATE_CAR_MODEL_ITEM, (state) => this.setState(state));
+  componentDidMount = () => connectToStore(this, STATE_CAR_MODEL_ITEM, (state) => this.setState(state));
 
-  componentWillUnmount = () => disconnect(this);
+  componentWillUnmount = () => disconnectFromStores(this);
 
   render() {
     let carDetails = this.state.carModelDetails;
