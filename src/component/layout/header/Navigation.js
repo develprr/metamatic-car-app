@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import {logout} from '../../../stores/AuthorizationStore';
 import {connectToStore} from 'metamatic';
-import {STORE_NAVIGATION} from '../../../config/states';
 import {clearCarModelSelection} from '../../../stores/CarModelStore';
+import {STORE_NAVIGATION} from '../../../stores/NavigationStore';
 
 class Navigation extends Component {
 

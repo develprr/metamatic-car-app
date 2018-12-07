@@ -1,7 +1,8 @@
 import {initStore, updateStore} from 'metamatic'
-import {STORE_AUTHORIZATION} from '../config/states';
 
-//use initState instead of setState or updateState to set initial state, so the state state won't be reset on browser page reload.
+export const STORE_AUTHORIZATION = 'STORE_AUTHORIZATION';
+
+//use initState instead of setStore or updateStore to set initial sttore, so the store won't be reset on browser page reload.
 export const AuthorizationStore = () => initStore(STORE_AUTHORIZATION, {
   loggedIn: false
 });

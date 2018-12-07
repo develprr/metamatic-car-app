@@ -1,5 +1,8 @@
-import {STORE_AUTHORIZATION, STORE_CAR_MODEL_ITEM, STORE_NAVIGATION} from '../config/states';
 import {handleEvent, initStore, updateStore} from 'metamatic';
+import {STORE_AUTHORIZATION} from './AuthorizationStore';
+import {STORE_CAR_MODEL_ITEM} from './CarModelStore';
+
+export const STORE_NAVIGATION = 'STORE_NAVIGATION';
 
 export const NavigationState = () => {
   initStore(STORE_AUTHORIZATION, {

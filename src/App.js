@@ -2,12 +2,12 @@ import React from 'react';
 import './App.css';
 import Login from './component/Login.js';
 import {connectToStore, disconnectFromStores} from 'metamatic';
-import {STORE_AUTHORIZATION} from './config/states';
 import {CarFilterList} from './component/CarFilterList';
 import {CarDetails} from './component/CarDetails';
 import {Route} from 'react-router-dom';
 import {Header} from './component/layout/header/Header';
 import BrowserRouter from 'react-router-dom/es/BrowserRouter';
+import {STORE_AUTHORIZATION} from './stores/AuthorizationStore';
 
 export class App extends React.Component {
 
@@ -16,7 +16,7 @@ export class App extends React.Component {
     this.state = {};
   }
 
-  componentDidMount = () => connectToStore(this, STORE_AUTHORIZATION, (state) => this.setState(state));
+  componentDidMount = () => connectToStore(this, STORE_AUTHORIZATION, (store) => this.setState(store));
 
   componentWillUnmount = () => disconnectFromStores(this);
 

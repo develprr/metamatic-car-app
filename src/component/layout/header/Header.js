@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {AppTitle} from './AppTitle';
 import Navigation from './Navigation';
 import {connectToStore} from 'metamatic';
-import {STORE_AUTHORIZATION} from '../../../config/states';
+import {STORE_AUTHORIZATION} from '../../../stores/AuthorizationStore';
 
 export class Header extends Component {
 

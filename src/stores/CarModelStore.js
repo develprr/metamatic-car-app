@@ -1,7 +1,9 @@
 import axios from 'axios';
 import {getState, setStore, updateStore} from 'metamatic';
-import {CAR_DATA_URL} from '../config/constants';
-import {STORE_CAR_MODEL_ITEM, STORE_CAR_MODEL_LIST} from '../config/states';
+import {CAR_DATA_URL} from '../config/constants';;
+
+export const STORE_CAR_MODEL_LIST = 'STORE_CAR_MODEL_LIST';
+export const STORE_CAR_MODEL_ITEM = 'STORE_CAR_MODEL_ITEM';
 
 export const ATTR_ALL_CAR_MODELS = 'allCarModels';
 export const ATTR_FILTERED_CAR_MODELS = 'filteredCarModels';

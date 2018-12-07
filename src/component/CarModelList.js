@@ -1,6 +1,5 @@
 import React from 'react';
-import {STORE_CAR_MODEL_LIST} from '../config/states';
-import {ATTR_FILTERED_CAR_MODELS, selectCarModel} from '../stores/CarModelStore';
+import {ATTR_FILTERED_CAR_MODELS, selectCarModel, STORE_CAR_MODEL_LIST} from '../stores/CarModelStore';
 import withRouter from 'react-router-dom/es/withRouter';
 import {connectToStore, disconnectFromStores} from 'metamatic';
 
@@ -11,7 +10,7 @@ class CarModelList extends React.Component {
     this.state = {};
   }
 
-  componentDidMount = () => connectToStore(this, STORE_CAR_MODEL_LIST, (state) => this.setState(state));
+  componentDidMount = () => connectToStore(this, STORE_CAR_MODEL_LIST, (store) => this.setState(store));
 
   componentWillUnmount = () => disconnectFromStores(this);
 
