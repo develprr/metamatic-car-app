@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import withRouter from 'react-router-dom/withRouter';
-import {logout} from '../../../states/AuthorizationStore';
+import {logout} from '../../../stores/AuthorizationStore';
 import {connectToStore} from 'metamatic';
-import {STATE_NAVIGATION} from '../../../config/states';
-import {clearCarModelSelection} from '../../../states/CarModelStore';
+import {STORE_NAVIGATION} from '../../../config/states';
+import {clearCarModelSelection} from '../../../stores/CarModelStore';
 
 class Navigation extends Component {
 
@@ -12,7 +12,7 @@ class Navigation extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => connectToStore(this, STATE_NAVIGATION, (navigationState) => this.setState(navigationState));
+  componentDidMount = () => connectToStore(this, STORE_NAVIGATION, (navigationState) => this.setState(navigationState));
 
   onHomeButtonClicked = () => {
     clearCarModelSelection();

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {AppTitle} from './AppTitle';
 import Navigation from './Navigation';
 import {connectToStore} from 'metamatic';
-import {STATE_AUTHORIZATION} from '../../../config/states';
+import {STORE_AUTHORIZATION} from '../../../config/states';
 
 export class Header extends Component {
 
@@ -11,7 +11,7 @@ export class Header extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => connectToStore(this, STATE_AUTHORIZATION, (state) => this.setState(state));
+  componentDidMount = () => connectToStore(this, STORE_AUTHORIZATION, (state) => this.setState(state));
 
   isLoggedIn = () => this.state.loggedIn === true;
 

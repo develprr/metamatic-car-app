@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {getState, setStore, updateStore} from 'metamatic';
 import {CAR_DATA_URL} from '../config/constants';
-import {STATE_CAR_MODEL_ITEM, STATE_CAR_MODEL_LIST} from '../config/states';
+import {STORE_CAR_MODEL_ITEM, STORE_CAR_MODEL_LIST} from '../config/states';
 
 export const ATTR_ALL_CAR_MODELS = 'allCarModels';
 export const ATTR_FILTERED_CAR_MODELS = 'filteredCarModels';
@@ -10,20 +10,20 @@ export const ATTR_CAR_MODEL_DETAILS = 'carModelDetails';
 
 export const CarModelStore = () => loadCarModelList();
 
-const getAllModels = () => getState(STATE_CAR_MODEL_LIST, ATTR_ALL_CAR_MODELS);
+const getAllModels = () => getState(STORE_CAR_MODEL_LIST, ATTR_ALL_CAR_MODELS);
 
 export const filterCarModels = (filter) => {
   const allCarModels = getAllModels();
   const filteredModels = filterByModel(allCarModels, filter);
-  updateStore(STATE_CAR_MODEL_LIST, {
+  updateStore(STORE_CAR_MODEL_LIST, {
     [ATTR_FILTERED_CAR_MODELS]: filteredModels
   });
 };
 
-export const clearCarModelSelection = () => setStore(STATE_CAR_MODEL_ITEM, {});
+export const clearCarModelSelection = () => setStore(STORE_CAR_MODEL_ITEM, {});
 
 export const selectCarModel  = (activeCarModelId) => {
-  updateStore(STATE_CAR_MODEL_ITEM, {
+  updateStore(STORE_CAR_MODEL_ITEM, {
     [ATTR_ACTIVE_CAR_MODEL_ID] : activeCarModelId
   });
   loadCarModelDetails(activeCarModelId)
@@ -31,7 +31,7 @@ export const selectCarModel  = (activeCarModelId) => {
 
 export const loadCarModelList = () => axios.get(`${CAR_DATA_URL}`).then((response) => updateCarModelList(response.data));
 
-const updateCarModelList = (allCarModels) => updateStore(STATE_CAR_MODEL_LIST, {
+const updateCarModelList = (allCarModels) => updateStore(STORE_CAR_MODEL_LIST, {
     [ATTR_ALL_CAR_MODELS]: allCarModels,
     [ATTR_FILTERED_CAR_MODELS]: allCarModels
 });
@@ -41,7 +41,7 @@ export const loadCarModelDetails = (carModelId) => {
   .then((response) => setCarModelDetails(response.data));
 };
 
-const setCarModelDetails = (carModelDetails) => updateStore(STATE_CAR_MODEL_ITEM, {
+const setCarModelDetails = (carModelDetails) => updateStore(STORE_CAR_MODEL_ITEM, {
   [ATTR_CAR_MODEL_DETAILS]: carModelDetails
 });
 
