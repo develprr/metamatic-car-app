@@ -1,6 +1,8 @@
-import axios from 'axios';
+//replace this with real axios for server-enabled environments
+import {axios} from '../server/fakeAxios';
+
 import {getState, setStore, updateStore} from 'metamatic';
-import {CAR_DATA_URL} from '../config/constants';;
+import {CAR_DATA_URL} from '../config/constants';
 
 export const STORE_CAR_MODEL_LIST = 'STORE_CAR_MODEL_LIST';
 export const STORE_CAR_MODEL_ITEM = 'STORE_CAR_MODEL_ITEM';

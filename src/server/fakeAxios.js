@@ -1,21 +1,7 @@
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const express = require('express');
-const path = require('path');
-const app = express();
+//fake axios & fake server for easily deploying demo app without need to deploy the actual server.
+export const axios = {};
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(bodyParser.json());
-app.use(cors());
-app.use(express.static('public'));
-
-app.use('/app', express.static('public'))
-app.use('/app', express.static(path.join(__dirname, 'public')))
-
-const getCars = () => [
+const getCarList = () => [
   {
     'id': 1,
     'model': 'Audi',
@@ -66,22 +52,28 @@ const getCars = () => [
   }
 ];
 
-const getCarsMap = () => getCars().reduce((map, car) => {
-  map[car.id] = car;
+const getCarsMap = () => getCarList().reduce((map, car) => {
+  map[car.id.toString()] = car;
   return map;
 }, {});
 
-const getCarById = (id) => getCarsMap()[id];
+const getCarById = (carId) => getCarsMap()[carId];
 
-app.get('/api/cars', function (req, res) {
-  const id = req.params.id;
-  res.json(getCars());
-});
+const getData = (url) => {
+  if (url === '/api/cars') {
+    return getCarList();
+  }
+  if (url.startsWith('/api/cars/')) {
+    return getCarById(url.split('/').pop());
+  }
+}
 
-app.get('/api/cars/:id', (req, res) => {
-  const id = req.params.id;
-  res.json(getCarById(id));
-});
+axios.get = (url) => {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      const data = getData(url);
+      resolve({data});
+    }, 300);
+  });
+};
 
-module.exports = app;
-app.listen(3001);
