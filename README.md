@@ -5,10 +5,7 @@ A demo app for showcasing The Metamatic Framework.
 
 A demo app written in ES6 on React to demonstrate how to use the Metamatic state container framework. 
 
-The Metamatic Framework consists of two parts:
-
-1) The Metamatic event functions that you install and 
-2) The MetaStore - the central state container that you implement.
+Find the demo running live at (https://develprr.github.io/metamatic-car-app)
 
 Check NPM package of the Metamatic Framework is available at (https://www.npmjs.com/package/metamatic)
 
