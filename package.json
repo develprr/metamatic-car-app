@@ -2,6 +2,7 @@
   "name": "metamatic-car-app",
   "version": "1.0.1",
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "react-scripts": "1.1.4"
   },
   "dependencies": {
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
-  "homepage": "https://www.npmjs.com/package/metamatic"
+  "homepage": "https://develprr.github.io/metamatic-car-app"
 }
