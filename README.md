@@ -24,27 +24,6 @@ And then run the app:
 ```js
 npm start
 ```
-
-## Start the backend
-
-The app will only work when the  mock car data server is up and running. To start the server,
-navigate to the server directory:
-
-```js
-cd src/server
-```
-
-Then install the packages needed by the server:
-
-```js
-npm install
-```
-
-And finally run the server:
-
-```js
-node car-server.js
-```
     
 ## License
 
