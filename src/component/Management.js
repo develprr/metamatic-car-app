@@ -1,7 +1,7 @@
 import React from 'react';
 import {CarFilterList} from './CarFilterList.js';
 import {Navigation} from './layout/header/Navigation.js';
-import {CarDetails} from './CarDetails';
+import CarDetails from './CarDetails';
 import {STORE_AUTHORIZATION, STORE_CAR_MODEL_ITEM} from '../config/states';
 import {ATTR_CAR_MODEL_DETAILS} from '../stores/CarModelStore';
 import {connectToStores, disconnectFromStores} from 'metamatic';
@@ -16,8 +16,8 @@ export class Management extends React.Component {
   }
 
   componentDidMount = () => connectToStores(this, {
-    [STORE_AUTHORIZATION]: (state) => this.setState({...this.state, ...state}),
-    [STORE_CAR_MODEL_ITEM]: (state) => this.setState({...this.state, ...state}),
+    [STORE_AUTHORIZATION]: (incomingStore) => this.setState({...this.state, ...incomingStore}),
+    [STORE_CAR_MODEL_ITEM]: (incomingStore) => this.setState({...this.state, ...incomingStore}),
   });
 
   componentWillUnmount = () => disconnectFromStores(this);

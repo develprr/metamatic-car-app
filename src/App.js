@@ -3,11 +3,13 @@ import './App.css';
 import Login from './component/Login.js';
 import {connectToStore, disconnectFromStores} from 'metamatic';
 import {CarFilterList} from './component/CarFilterList';
-import {CarDetails} from './component/CarDetails';
+import CarDetails from './component/CarDetails';
 import {Route} from 'react-router-dom';
 import {Header} from './component/layout/header/Header';
 import BrowserRouter from 'react-router-dom/es/BrowserRouter';
 import {STORE_AUTHORIZATION} from './stores/AuthorizationStore';
+import OrderView from './component/OrderView';
+import OrderConfirmationView from './component/OrderConfirmationView';
 
 export class App extends React.Component {
 
@@ -27,6 +29,8 @@ export class App extends React.Component {
         <Route path='/' component={Header}/>
         <Route exact path='/cars' component={CarFilterList}/>
         <Route exact path='/cars/:carId' component={CarDetails}/>
+        <Route exact path='/cars/:carId/order' component={OrderView}/>
+        <Route exact path='/confirmation' component={OrderConfirmationView}/>
       </div>
   )
 
