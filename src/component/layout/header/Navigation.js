@@ -25,7 +25,7 @@ class Navigation extends Component {
 
   getBackButton = () => this.isHomeButtonEnabled() ? (
       <button id="back-button" type="button" className="btn btn-default btn-lg pull-left" onClick={this.onHomeButtonClicked}>
-        <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Home
+        <span className="glyphicon glyphicon-home" aria-hidden="true"></span> Home
       </button>
   ) : null;
 
