@@ -36,7 +36,6 @@ class OrderView extends Component {
   isExpressDelivery = () => this.state.expressDelivery;
 
   render() {
-    console.log('state', this.state);
     const carDetails = this.getCarModelDetails();
     return carDetails ? (
         <form>
