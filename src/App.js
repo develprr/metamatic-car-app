@@ -44,7 +44,7 @@ export class App extends React.Component {
   renderContent = () => this.isLoggedIn() ? this.renderAuthorizedContent() : this.renderUnauthorizedContent();
 
   render = () => (
-    <BrowserRouter  basename="/metamatic-car-app" >
+    <BrowserRouter>
       {this.renderContent()}
     </BrowserRouter>
   )
