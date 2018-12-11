@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import {logout} from '../../../stores/AuthorizationStore';
-import {connectToStore} from 'metamatic';
+import {connectToStore, disconnectFromStores} from 'metamatic';
 import {clearCarModelSelection} from '../../../stores/CarModelStore';
 import {STORE_NAVIGATION} from '../../../stores/NavigationStore';
 
@@ -13,6 +13,8 @@ class Navigation extends Component {
   }
 
   componentDidMount = () => connectToStore(this, STORE_NAVIGATION, (navigationState) => this.setState(navigationState));
+
+  componentWillUnmount = () => disconnectFromStores(this);
 
   onHomeButtonClicked = () => {
     clearCarModelSelection();
