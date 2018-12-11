@@ -25,27 +25,27 @@ export class App extends React.Component {
   isLoggedIn = () => this.state.loggedIn === true;
 
   renderAuthorizedContent = () => (
-      <div className="container-fluid">
-        <Route path='/' component={Header}/>
-        <Route exact path='/cars' component={CarFilterList}/>
-        <Route exact path='/cars/:carId' component={CarDetails}/>
-        <Route exact path='/cars/:carId/order' component={OrderView}/>
-        <Route exact path='/confirmation' component={OrderConfirmationView}/>
-      </div>
+    <div className="container-fluid">
+      <Route path='/' component={Header}/>
+      <Route exact path='/cars' component={CarFilterList}/>
+      <Route exact path='/cars/:carId' component={CarDetails}/>
+      <Route exact path='/cars/:carId/order' component={OrderView}/>
+      <Route exact path='/confirmation' component={OrderConfirmationView}/>
+    </div>
   )
 
   renderUnauthorizedContent = () => (
-      <div className="container-fluid">
-        <Route path='/' component={Header}/>
-        <Login/>
-      </div>
+    <div className="container-fluid">
+      <Route path='/' component={Header}/>
+      <Login/>
+    </div>
   )
 
   renderContent = () => this.isLoggedIn() ? this.renderAuthorizedContent() : this.renderUnauthorizedContent();
 
   render = () => (
-      <BrowserRouter>
-        {this.renderContent()}
-      </BrowserRouter>
+    <BrowserRouter  basename="/metamatic-car-app" >
+      {this.renderContent()}
+    </BrowserRouter>
   )
 }
