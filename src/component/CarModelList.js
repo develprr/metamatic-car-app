@@ -23,7 +23,7 @@ class CarModelList extends React.Component {
   }
 
   getCarList = () => this.getCarModels().map((item) =>
-      <li className="list-group-item" data-id={item.id} onClick={this.selectCarModel} key={item.model.toString()}>
+    <li className="list-group-item" data-id={item.id} onClick={this.selectCarModel} key={item.model.toString()}>
       {item.model}
     </li>
   );

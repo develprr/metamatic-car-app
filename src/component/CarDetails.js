@@ -22,7 +22,7 @@ class CarDetails extends React.Component {
     this.props.history.push(`/cars/${carModelId}/order`);
   }
 
-  render() {
+  render = () => {
     const carDetails = this.getCarModelDetails();
     return carDetails ? (
       <form>

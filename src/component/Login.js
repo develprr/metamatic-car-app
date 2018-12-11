@@ -21,20 +21,20 @@ class Login extends React.Component {
   }
 
   render = () => (
-      <form>
-        <div className="form-group">
-          <label htmlFor="email">Email address:</label>
-          <input type="email" className="form-control" id="email" placeholder={"Just type anything and click submit"} onChange={this.updateEmail}/>
-        </div>
-        <div className="form-group">
-          <label htmlFor="pwd">Password:</label>
-          <input type="password" className="form-control" id="pwd" placeholder={"Just type anything and click submit"} onChange={this.updatePassword}/>
-        </div>
-        <div className="checkbox">
-          <label><input type="checkbox"/> Remember me</label>
-        </div>
-        <button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
-      </form>
+    <form>
+      <div className="form-group">
+        <label htmlFor="email">Email address:</label>
+        <input type="email" className="form-control" id="email" placeholder={"Just type anything and click submit"} onChange={this.updateEmail}/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="pwd">Password:</label>
+        <input type="password" className="form-control" id="pwd" placeholder={"Just type anything and click submit"} onChange={this.updatePassword}/>
+      </div>
+      <div className="checkbox">
+        <label><input type="checkbox"/> Remember me</label>
+      </div>
+      <button type="submit" className="btn btn-default" onClick={this.handleSubmit}>Submit</button>
+    </form>
   );
 }
 
