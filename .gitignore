@@ -1,4 +1,6 @@
-src/server/node_modules
-src/server/package-lock.json
+build
+deploy.sh
+node_modules
 package-lock.json
 .idea
+.config
