@@ -1,5 +1,4 @@
-//replace this with real axios for server-enabled environments
-import {axios} from '../server/fakeAxios';
+import axios from 'axios';
 
 import {getState, handleEvent, setStore, updateStore} from 'metamatic';
 import {CAR_DATA_URL} from '../config/constants';
@@ -15,7 +14,7 @@ export const ATTR_CAR_MODEL_DETAILS = 'carModelDetails';
 
 export const CarModelStore = () => {
   loadCarModelList();
-  handleEvent(CONNECT_CAR_MODEL_ITEM, () => loadCarModelDetailsByUrl())
+  handleEvent(CONNECT_CAR_MODEL_ITEM, () => loadCarModelDetailsByUrl());
 }
 
 const getAllModels = () => getState(STORE_CAR_MODEL_LIST, ATTR_ALL_CAR_MODELS);
@@ -50,12 +49,12 @@ const extractCarModelIdFromUrl = () => {
   return id;
 }
 
-export const loadCarModelDetailsByUrl = () => {
+const loadCarModelDetailsByUrl = () => {
  const carModelId = extractCarModelIdFromUrl();
  loadCarModelDetails(carModelId);
 }
 
-export const loadCarModelDetails = (carModelId) => {
+const loadCarModelDetails = (carModelId) => {
   axios.get(`${CAR_DATA_URL}/${carModelId}`)
   .then((response) => setCarModelDetails(response.data));
 };
