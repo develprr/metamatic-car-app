@@ -30,7 +30,7 @@ export class App extends React.Component {
       <Route exact path='/cars' component={CarFilterList}/>
       <Route exact path='/cars/:carId' component={CarDetails}/>
       <Route exact path='/cars/:carId/order' component={OrderView}/>
-      <Route exact path='/confirmation' component={OrderConfirmationView}/>
+      <Route exact path='/cars/:carId/confirmation' component={OrderConfirmationView}/>
     </div>
   )
 

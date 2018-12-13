@@ -15,7 +15,9 @@ class OrderView extends Component {
 
   componentWillUmount = () => disconnectFromStores(this);
 
-  getCarModelDetails = () => this.state.carModelDetails;
+  getCarModelDetails = () => this.state.carModelDetails || {};
+
+  getCarModelId = () => this.getCarModelDetails().id;
 
   onNameChange = (event) => updateName(event.target.value);
 
@@ -29,7 +31,7 @@ class OrderView extends Component {
 
   getPhone = () => this.state.phone;
 
-  confirmOrder = () =>  this.props.history.push('/confirmation');
+  confirmOrder = () =>  this.props.history.push(`/cars/${this.getCarModelId()}/confirmation`);
 
   onExpressDeliveryChange = (event) =>  setExpressDelivery(event.target.checked);
 
