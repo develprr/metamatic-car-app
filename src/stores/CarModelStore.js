@@ -45,7 +45,7 @@ const updateCarModelList = (allCarModels) => updateStore(STORE_CAR_MODEL_LIST, {
 
 const extractCarModelIdFromUrl = () => {
   const url = window.location.href;
-  const id  = (url.split('/cars/')[1] || '').split('/order')[0];
+  const id  = (url.split('/cars/')[1] || '').split('/')[0];
   return id;
 }
 
