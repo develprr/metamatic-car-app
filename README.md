@@ -1,13 +1,14 @@
-# The Metamatic Car App
-A demo app for showcasing The Metamatic Framework.
+# A Car App on Metamatic™
+
+A demo app for showcasing Metamatic™ framework in action.
 
 ### Introduction
 
-A demo app written in ES6 on React to demonstrate how to use the Metamatic state container framework. 
+A demo app written in ES6 on React to demonstrate how to use Metamatic™ state container framework. 
 
 Find the demo running live at (https://metamatic-car-app.herokuapp.com)
 
-Check NPM package of the Metamatic Framework is available at (https://www.npmjs.com/package/metamatic)
+Check NPM package of Metamatic is available at (https://www.npmjs.com/package/metamatic)
 
 ## Start the frontend
 
